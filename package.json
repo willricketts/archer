@@ -1,0 +1,16 @@
+{
+  "name": "archer",
+  "version": "1.0.0",
+  "description": "Automated home assistant",
+  "main": "archer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Will Ricketts",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "speechjs": "0.0.1"
+  }
+}
