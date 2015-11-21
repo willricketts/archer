@@ -1,8 +1,10 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'ejs');
+
 app.get('/', function (req, res) {
-  res.sendFile('./public/index.html');
+  res.render('index');
 });
 
 var server = app.listen(process.env.PORT, function () {

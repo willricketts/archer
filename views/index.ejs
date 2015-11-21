@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var Speech=function(t){function e(t){if(this.options={debugging:!1,continuous:!1,interimResults:!1,autoRestart:!1},"[object Object]"===Object.prototype.toString.call(t))for(var e in t)this.options[e]=t[e];this.active=!1,this.manualStopped=!1,this.history=[],this.lastIndex=-1,this.lastResult="",this.recognition=new webkitSpeechRecognition;var i=this.recognition,s=this;i.continuous=s.options.continuous,i.interimResults=s.options.interimResults,t.lang&&(i.lang=t.lang),i.onstart=function(){s.active=!0,this.manualStopped=!1,s.emit("start")},i.onresult=function(t){if(t.results&&t.results.length){var e=t.results[t.resultIndex],i=e[0].transcript.replace(/^\s*/,"");t.resultIndex!==s.lastIndex&&(s.lastIndex=t.resultIndex,s.lastResult=""),(i!==s.lastResult||e.isFinal)&&(i.length<s.lastResult.length||(s.lastResult=i,e.isFinal?(s.history.push(i),s.emit("finalResult",i)):s.emit("interimResult",i),s.options.debugging&&console.log(i+(e.isFinal?" (final)":""))))}},i.onerror=function(t){s.emit("error",t)},i.onend=function(){s.active=!1,s.history=[],s.lastIndex=-1,s.lastResult="",s.emit("end"),s.options.autoRestart&&!s.manualStopped&&s.start()}}var i=/\s+/,s=function(){};return s.prototype.on=function(t,e,s){var n,o,r;if(!e)return this;for(n=this.__events||(this.__events={}),t=t.split(i);o=t.shift();)r=n[o]||(n[o]=[]),r.push(e,s);return this},s.prototype.off=function(t,e,s){var n,o,r,l;if(!(n=this.__events))return this;if(!(t||e||s))return delete this.__events,this;for(t=t?t.split(i):Object.keys(n);o=t.shift();)if(r=n[o])if(e||s)for(l=r.length-2;l>=0;l-=2)e&&r[l]!==e||s&&r[l+1]!==s||r.splice(l,2);else delete n[o];return this},s.prototype.emit=function(t){var e,s,n,o,r,l,a,u=[];if(!(e=this.__events))return this;for(t=t.split(i),r=1,l=arguments.length;l>r;r++)u[r-1]=arguments[r];for(;s=t.shift();){if((n=e.all)&&(n=n.slice()),(o=e[s])&&(o=o.slice()),o)for(r=0,l=o.length;l>r;r+=2)o[r].apply(o[r+1]||this,u);if(n)for(a=[s].concat(u),r=0,l=n.length;l>r;r+=2)n[r].apply(n[r+1]||this,a)}return this},s.mixTo=function(t){t=t.prototype||t;var e=s.prototype;for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])},e.prototype.start=function(){this.active||this.recognition.start()},e.prototype.stop=function(){this.active&&(this.manualStopped=!0,this.recognition.stop())},s.mixTo(e),e}();module&&module.exports&&(module.exports=Speech);
+        </script>
+        <style>
+            body {
+                font-family: 'Helvetica Neue', Arial, sans-serif;
+            }
+            #text {
+                font-size: 80px;
+                letter-spacing: -3px;
+                text-align: center;
+                margin: 0;
+                position: absolute;
+                width: 100%;
+                top: 40%;
+            }
+            p {
+                font-weight: bold;
+                text-align: center;
+                font-size: 13px;
+                color: #999;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="text">Please allow access to mic.</h1>
+        <p>Speech.js demo by Evan You</p>
+        <a href="https://github.com/yyx990803/Speech.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+        <script type="text/javascript">
+            var text = document.getElementById('text')
+            var speech = new Speech({
+                debugging: true,
+                continuous: true,
+                interimResults: true,
+                autoRestart: true
+            })
+            speech
+                .on('start', function () {
+                    text.innerHTML = 'Come on, talk to me.'
+                })
+                .on('end', function () {
+                    text.innerHTML = 'Stopped listening.'
+                })
+                .on('interimResult', function (msg) {
+                    text.innerHTML = msg
+                })
+                .on('finalResult', function (msg) {
+                    text.innerHTML = msg
+                })
+                .start()
+                
+
+            function getTrigger(msg) {
+                
+            }
+            
+            function parseCommand(msg) {
+                
+            }
+        </script>
+    </body>
+</html>

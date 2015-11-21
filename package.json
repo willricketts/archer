@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.3.4",
+    "ejs-locals": "^1.0.2",
     "express": "^4.13.3",
     "speechjs": "0.0.1"
   }
