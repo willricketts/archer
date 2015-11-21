@@ -1,3 +1,3 @@
 # Archer
 
-Speech operated home automation system
+Speech operated home automation assistant
