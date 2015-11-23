@@ -3,31 +3,36 @@ var request = require('request');
 var app = express();
 var io = require('socket.io')(8081);
 
-io.sockets.on('connection', function (socket) {
-  console.log('connection');
-});
-
-var io_client = require('socket.io-client');
-var socket = io_client('');
-
-socket.on('connect', function(data) {
-    console.log('connect');
+io.on('connection', function (socket) {
+  console.log('someone connected to me');
+  socket.on('command', function(data) {
+    console.log('got a command');
+    console.log(data);
+    if(data.command == 'weather') {
+      request.get('', function(err, res) {
+        if(err) {
+          socket.emit('response', { type: 'system', response: 'There was a problem getting the weather. Things just never seem to work right.' });
+        }
+        else {
+          socket.emit('response',{ type: 'weather', response: res.body });
+        }
+      });
+    }
+    else if(data.command == 'Twitter') {
+      console.log(data.command);
+      socket.emit('response', { type: 'system', response: 'Here is your Twitter feed for the last sixty seconds.' });
+    }
+    else {
+      socket.emit('response', { type: 'system', response: "I don't know what you mean." });
+    }
+  });
 });
 
 app.get('/', function (req, res) {
   res.json(process.memoryUsage());
 });
 
-app.post('/', function(req, res) {
-  request.get('', function(err, res) {
-    if(err) {
-      res.error(err);
-    }
-    console.log(res.body);
-  });
-});
-
-var server = app.listen(process.env.PORT, function () {
-  var port = process.env.PORT
+var server = app.listen(process.env.PORT || 8080, function () {
+  var port = process.env.PORT || 8080;
   console.log('Archer Server listening on %s', port);
 });
