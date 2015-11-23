@@ -67,12 +67,13 @@
                     text.innerHTML = 'I\'m listening';
                 })
                 .start();
-                
+
             socket.on('response', function(data) {
                 console.log("GOT A RESPONSE EVENT", data)
                 if(data.type == 'weather') {
-                    var x = JSON.parse(data.response);
-                    speak('The current temperature in ' + x.city.name + ' is ' + x.list[0].main.temp + ' degrees.');
+                  console.log('FIRED');
+                  var x = JSON.parse(data.response);
+                  speak('The current temperature in ' + x.name + ' is ' + x.main.temp + ' degrees.');
                 }
                 else {
                     console.log('needs 2 speak');
@@ -87,13 +88,13 @@
                     return true;
                 }
             }
-            
+
             function handleCommand(msg) {
                 var x = msg.replace("yes ", '');
                 listening = false;
                 socket.emit('command', { command: x })
             }
-            
+
             function speak(msg) {
                 var voices = mouth.getVoices();
                 var x = new SpeechSynthesisUtterance(msg)

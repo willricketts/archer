@@ -7,20 +7,24 @@ io.on('connection', function (socket) {
   console.log('someone connected to me');
   socket.on('command', function(data) {
     console.log('got a command');
-    console.log(data);
+    console.log(data.command);
     if(data.command == 'weather') {
-      request.get('', function(err, res) {
+      request.get('http://api.openweathermap.org/data/2.5/weather?q=Atlanta&units=imperial&APPID=' + process.env.OPENWEATHERMAP_KEY, function(err, res) {
         if(err) {
           socket.emit('response', { type: 'system', response: 'There was a problem getting the weather. Things just never seem to work right.' });
         }
         else {
-          socket.emit('response',{ type: 'weather', response: res.body });
+          console.log('weather fired');
+          socket.emit('response', { type: 'weather', response: res.body });
         }
       });
     }
     else if(data.command == 'Twitter') {
       console.log(data.command);
       socket.emit('response', { type: 'system', response: 'Here is your Twitter feed for the last sixty seconds.' });
+    }
+    else if(data.command == 'Gary') {
+      socket.emit('response', { type: 'system', response: "What do you get when you guzzle down sweets?" });
     }
     else {
       socket.emit('response', { type: 'system', response: "I don't know what you mean." });
