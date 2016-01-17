@@ -1,22 +1,11 @@
 var express = require('express');
 var app = express();
 var io = require('socket.io')(8083);
-
-io.sockets.on('connection', function(data) {
-   console.log('someone connected to me');
-   socket.emit('weather', {});
-});
-
 var io_client = require('socket.io-client');
 var socket = io_client('http://localhost:8081');
 
 socket.on('connect', function(data) {
-   socket.emit('weather', {})
-   console.log('i connected to someone');
-});
-
-socket.on('weather', function(data) {
-   console.log('worker weather');
+   console.log('I connected to an Archer server');
 });
 
 app.use(express.static(__dirname + 'views'));

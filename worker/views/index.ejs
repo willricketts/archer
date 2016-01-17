@@ -70,15 +70,8 @@
 
             socket.on('response', function(data) {
                 console.log("GOT A RESPONSE EVENT", data)
-                if(data.type == 'weather') {
-                  console.log('FIRED');
-                  var x = JSON.parse(data.response);
-                  speak('The current temperature in ' + x.name + ' is ' + x.main.temp + ' degrees.');
-                }
-                else {
-                    console.log('needs 2 speak');
-                    speak(data.response);
-                }
+                console.log('FIRED');
+                speak(data.response);
             });
 
             function getTrigger(msg) {
