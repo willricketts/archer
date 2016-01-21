@@ -2,10 +2,17 @@
 
 Voice-controller home automation system built on Node.js with help from the Google Speech API, and various third-party web services.
 
-Archer contains a server and worker, and requires access to both a microphone and speakers to operate.
+While an Archer server can run on pretty much any *nix system, an Archer worker requires both a microphone and speaker to operate.
 
+### Server
 
-### Quick Start
+#### Quick Start
+```
+npm install
+```
+
+### Worker
+#### Quick Start
 ```
 npm install
 ```
