@@ -9,6 +9,7 @@ socket.on('connect', function(data) {
 });
 
 app.use(express.static(__dirname + 'views'));
+app.use(express.static('./views/public'));
 
 app.get('/', function (req, res) {
  res.render(__dirname + '/views/index.ejs');

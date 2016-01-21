@@ -1,0 +1,32 @@
+{
+  "name": "archer-server",
+  "version": "0.1.0",
+  "description": "Archer home automation assistant server",
+  "main": "archer.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "request": "^2.67.0",
+    "socket.io": "^1.4.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/willricketts/archer.git"
+  },
+  "keywords": [
+    "home",
+    "automation",
+    "automation",
+    "echo",
+    "assistant"
+  ],
+  "author": "@willricketts",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/willricketts/archer/issues"
+  },
+  "homepage": "https://github.com/willricketts/archer#readme"
+}
