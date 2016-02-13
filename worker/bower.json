@@ -1,0 +1,30 @@
+{
+  "name": "archer-worker",
+  "description": "Home automation assistant worker node",
+  "main": "worker.js",
+  "authors": [
+    "@willricketts"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "home",
+    "automation",
+    "automation",
+    "assistant",
+    "echo"
+  ],
+  "homepage": "https://github.com/willricketts/archer",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "socket.io": "^1.4.5"
+  }
+}
