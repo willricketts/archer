@@ -1,0 +1,21 @@
+{
+  "name": "archer",
+  "version": "1.0.0",
+  "description": "Voice-controller home automation system built on Node.js with help from the Google Speech API, and various third-party web services.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willricketts/archer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willricketts/archer/issues"
+  },
+  "homepage": "https://github.com/willricketts/archer#readme"
+}
