@@ -1,4 +1,4 @@
-# Archer
+# Archer [![Build Status](https://travis-ci.org/willricketts/archer.svg?branch=master)](https://travis-ci.org/willricketts/archer)
 
 Voice-controller home automation system built on Node.js with help from the Google Speech API, and various third-party web services.
 
