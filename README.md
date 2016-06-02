@@ -22,3 +22,6 @@ npm install
 
 ### Environment Variables
 * `OPENWEATHERMAP_KEY` - Open Weather Map API key
+
+### TODO
+* Add Archer nmap node discovery mechanism
